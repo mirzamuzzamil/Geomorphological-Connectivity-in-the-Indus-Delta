@@ -164,7 +164,7 @@ If you use this benchmark dataset or code in your research, please cite:
   title     = {Geomorphological Connectivity and Temporal Hydrological Controls of Surface Water Dynamics in the Indus River Delta},
   journal   = {Hydrology and Earth System Sciences},
   year      = {2026},
-  doi       = {10.5281/zenodo.placeholder}
+  doi       = {10.5281/zenodo.20761608}
 }
 ```
 
