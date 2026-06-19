@@ -1,0 +1,121 @@
+\documentclass[12pt, a4paper]{article}
+
+% ── Packages ──────────────────────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{lineno}
+\linenumbers
+\doublespacing
+
+% ── Running head (manual) ─────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small Supplementary Material: Geomorphological Connectivity \& Temporal Controls}
+\rhead{\small M. Muzzamil et al.}
+\cfoot{\thepage}
+
+% ── Helper commands to replace Copernicus-specific macros ─────────────────────
+\newcommand{\runningtitle}[1]{}
+\newcommand{\runningauthor}[1]{}
+\newcommand{\correspondence}[1]{\footnote{Correspondence: #1}}
+
+% ── Helper commands to replace Elsevier-specific macros ───────────────────────
+\usepackage{keyval}
+\makeatletter
+\providecommand{\ead}[1]{\footnote{Email: \href{mailto:#1}{\texttt{\detokenize{#1}}}}}
+\providecommand{\corref}[1]{$^*$}
+\providecommand{\cortext}[2][]{}
+\define@key{aff}{organization}{\def\aff@org{#1}}
+\define@key{aff}{addressline}{\def\aff@addr{#1}}
+\define@key{aff}{city}{\def\aff@city{#1}}
+\define@key{aff}{postcode}{\def\aff@post{#1}}
+\define@key{aff}{country}{\def\aff@country{#1}}
+\providecommand{\affiliation}[2][]{%
+  \def\aff@org{}%
+  \def\aff@addr{}%
+  \def\aff@city{}%
+  \def\aff@post{}%
+  \def\aff@country{}%
+  \setkeys{aff}{#2}%
+  \affil[#1]{%
+    \ifx\aff@org\@empty\else\aff@org\fi
+    \ifx\aff@addr\@empty\else, \aff@addr\fi
+    \ifx\aff@city\@empty\else, \aff@city\fi
+    \ifx\aff@post\@empty\else--\aff@post\fi
+    \ifx\aff@country\@empty\else, \aff@country\fi
+  }%
+}
+\makeatother
+
+% ── Document ──────────────────────────────────────────────────────────────────
+\begin{document}
+
+\title{\textbf{Supplementary Material: Geomorphological Connectivity and Temporal Hydrological Controls\\
+of Surface Water Dynamics in the Indus River Delta}}
+
+\author[inst1]{Mirza Muhammad Muzzamil\corref{cor1}}
+\ead{mirzamuzzamil@neduet.edu.pk}
+
+\author[inst1]{Muhammad Ali Ismael}
+\ead{maismael@neduet.edu.pk}
+
+\author[inst2]{Syed Imran Ahmad}
+\ead{imranahmad@neduet.edu.pk}
+
+\author[inst3]{Rustam B. Rustomov}
+\ead{r_rustomov@hotmail.com}
+
+\cortext[cor1]{Corresponding author.}
+
+\affiliation[inst1]{
+    organization={Department of Computer and Information Systems Engineering (CISE), NED University of Engineering and Technology},
+    addressline={University Road},
+    city={Karachi},
+    postcode={75270},
+    country={Pakistan}
+}
+
+\affiliation[inst2]{
+    organization={Department of Civil Engineering, NED University of Engineering and Technology},
+    addressline={University Road},
+    city={Karachi},
+    postcode={75270},
+    country={Pakistan}
+}
+
+\affiliation[inst3]{
+    organization={Department of Scientific Innovations and External Relations, Institute of Physics, Ministry of Science and Education of the Republic of Azerbaijan},
+    addressline={33 H. Javid Avenue},
+    city={Baku},
+    postcode={AZ1143},
+    country={Azerbaijan}
+}
+
+\date{}
+\maketitle
+
+\thispagestyle{fancy}
+
+\input{supplementary/reviewer_response}
+
+\newpage
+
+\input{supplementary/significance_analysis}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

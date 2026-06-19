@@ -1,0 +1,193 @@
+\documentclass[12pt, a4paper]{article}
+
+% ── Packages ──────────────────────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{authblk}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{lineno}
+\linenumbers
+\doublespacing
+
+% ── Running head (manual) ─────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small Geomorphological Connectivity and Temporal Controls}
+\rhead{\small M. Muzzamil et al.}
+\cfoot{\thepage}
+
+% ── Helper commands to replace Copernicus-specific macros ─────────────────────
+\newcommand{\runningtitle}[1]{}
+\newcommand{\runningauthor}[1]{}
+\newcommand{\correspondence}[1]{\footnote{Correspondence: #1}}
+\newcommand{\received}[1]{}
+\newcommand{\pubdiscuss}[1]{}
+\newcommand{\accepted}[1]{}
+\newcommand{\published}[1]{}
+\newcommand{\firstpage}[1]{}
+
+% Section-level wrappers for Copernicus back-matter macros
+\newcommand{\codeavailability}{\section*{Code availability}}
+\newcommand{\dataavailability}{\section*{Data availability}}
+\newcommand{\authorcontribution}{\section*{Author contributions}}
+\newcommand{\competinginterests}{\section*{Competing interests}}
+\newcommand{\acknowledgements}{\section*{Acknowledgements}}
+
+% Copernicus uses \introduction instead of \section{Introduction}
+\newcommand{\introduction}{\section{Introduction}}
+
+% ── Helper commands to replace Elsevier-specific macros ───────────────────────
+\usepackage{keyval}
+\makeatletter
+\providecommand{\ead}[1]{\footnote{Email: \href{mailto:#1}{\texttt{\detokenize{#1}}}}}
+\providecommand{\corref}[1]{$^*$}
+\providecommand{\cortext}[2][]{}
+\define@key{aff}{organization}{\def\aff@org{#1}}
+\define@key{aff}{addressline}{\def\aff@addr{#1}}
+\define@key{aff}{city}{\def\aff@city{#1}}
+\define@key{aff}{postcode}{\def\aff@post{#1}}
+\define@key{aff}{country}{\def\aff@country{#1}}
+\providecommand{\affiliation}[2][]{%
+  \def\aff@org{}%
+  \def\aff@addr{}%
+  \def\aff@city{}%
+  \def\aff@post{}%
+  \def\aff@country{}%
+  \setkeys{aff}{#2}%
+  \affil[#1]{%
+    \ifx\aff@org\@empty\else\aff@org\fi
+    \ifx\aff@addr\@empty\else, \aff@addr\fi
+    \ifx\aff@city\@empty\else, \aff@city\fi
+    \ifx\aff@post\@empty\else--\aff@post\fi
+    \ifx\aff@country\@empty\else, \aff@country\fi
+  }%
+}
+\makeatother
+
+% ── Document ──────────────────────────────────────────────────────────────────
+\begin{document}
+
+\title{\textbf{Geomorphological Connectivity and Temporal Hydrological Controls\\
+of Surface Water Dynamics in the Indus River Delta}}
+
+\author[inst1]{Mirza Muhammad Muzzamil\corref{cor1}}
+\ead{mirzamuzzamil@neduet.edu.pk}
+
+\author[inst1]{Muhammad Ali Ismael}
+\ead{maismael@neduet.edu.pk}
+
+\author[inst2]{Syed Imran Ahmad}
+\ead{imranahmad@neduet.edu.pk}
+
+\author[inst3]{Rustam B. Rustomov}
+\ead{r_rustomov@hotmail.com}
+
+\cortext[cor1]{Corresponding author.}
+
+\affiliation[inst1]{
+    organization={Department of Computer and Information Systems Engineering (CISE), NED University of Engineering and Technology},
+    addressline={University Road},
+    city={Karachi},
+    postcode={75270},
+    country={Pakistan}
+}
+
+\affiliation[inst2]{
+    organization={Department of Civil Engineering, NED University of Engineering and Technology},
+    addressline={University Road},
+    city={Karachi},
+    postcode={75270},
+    country={Pakistan}
+}
+
+\affiliation[inst3]{
+    organization={Department of Scientific Innovations and External Relations, Institute of Physics, Ministry of Science and Education of the Republic of Azerbaijan},
+    addressline={33 H. Javid Avenue},
+    city={Baku},
+    postcode={AZ1143},
+    country={Azerbaijan}
+}
+
+\date{}
+\maketitle
+
+\thispagestyle{fancy}
+
+% ── Abstract ──────────────────────────────────────────────────────────────────
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+% ── Main body ─────────────────────────────────────────────────────────────────
+\introduction
+\input{sections/introduction}
+
+\input{sections/literature_review}
+
+\input{sections/study_area}
+
+\input{sections/datasets}
+
+\input{sections/methodology}
+
+\input{sections/results}
+
+\input{sections/discussion}
+
+\input{sections/conclusion}
+
+% ── Back matter ───────────────────────────────────────────────────────────────
+\codeavailability
+All modeling code and processing pipelines (written in Python~3.10 using
+PyTorch~2.1.2 and Scikit-Learn~1.3.2) are publicly available at
+\url{https://github.com/mirzamuzzamil/Geomorphological-Connectivity-in-the-Indus-Delta}
+under the MIT License.
+The repository contains baseline model configurations (Random Forest, LSTM,
+Transformer), feature split ablations, McNemar significance tests, and
+diagnostic audit scripts.
+Google Earth Engine collection identifiers and extraction parameters are
+documented in Sect.~3 and in the supplementary materials.
+
+\dataavailability
+All primary datasets used in this study are publicly accessible through
+Google Earth Engine.
+The Sentinel-1 GRD backscatter data (\verb|COPERNICUS/S1_GRD|),
+ERA5-Land monthly reanalysis (\verb|ECMWF/ERA5_LAND/MONTHLY_AGGR|),
+CHIRPS daily precipitation (\verb|UCSB-CHG/CHIRPS/DAILY|),
+JRC Global Surface Water (\verb|JRC/GSW1_4/MonthlyHistory|),
+SRTM digital elevation model (\verb|USGS/SRTMGL1_003|), and
+HydroSHEDS flow accumulation (\verb|WWF/HydroSHEDS/15ACC|) are freely
+available.
+The derived point-level spatial-temporal dataset compiled and used in this study is publicly archived on Zenodo at \url{https://doi.org/10.5281/zenodo.10827364}.
+
+\authorcontribution
+MMM designed the GEE data extraction, conducted the machine learning and diagnostic experiments, analysed the results, and drafted the manuscript. MAI supervised the machine learning model development and validated the results. SIA supervised the hydrological and remote sensing interpretations and checked the routing lags. RBR assisted with the GIS and remote sensing data processing, validated the JRC datasets, and reviewed the manuscript. All authors contributed to manuscript revision.
+
+\section*{Declaration of Generative AI in the Scientific Writing Process}
+During the preparation of this work, the authors used generative AI and AI-assisted technologies (specifically large language models) for spelling, grammar refinement, and stylistic improvement of the manuscript text. All scientific findings, machine learning experiments, and statistical analyses were conducted and verified by the authors, who take full responsibility for the scientific content and integrity of the manuscript.
+
+\competinginterests
+The authors declare that they have no competing interests.
+
+\acknowledgements
+We thank Google Earth Engine for providing cloud computing resources, the
+Copernicus Programme for free access to Sentinel-1 and Sentinel-2 imagery,
+the ECMWF for ERA5-Land reanalysis products, and the Climate Hazards Group
+for CHIRPS precipitation data.
+
+% ── References ────────────────────────────────────────────────────────────────
+\bibliographystyle{copernicus}
+\bibliography{references}
+
+\end{document}

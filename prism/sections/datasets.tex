@@ -1,0 +1,32 @@
+\section{Datasets}
+To analyze surface water dynamics, we compiled a high-resolution spatial-temporal dataset over the Indus Delta spanning the years 2018 to 2024. The dataset consists of 1,000 spatial point locations sampled across the delta, yielding a total of 83,000 monthly records over 83 sequential months (excluding August 2018 due to 100\% cloud cover).
+
+\subsection{Stratified Sampling Design}
+To capture the full spectrum of hydrological conditions, the 1,000 point locations were selected using a stratified random sampling design based on the long-term JRC Global Surface Water occurrence dataset \citep{Pekel2016Highresolution}:
+\begin{itemize}
+    \item \textbf{Permanent Water (300 points):} Selected from areas with a historical water occurrence probability $> 50\%$, corresponding to main river channels, active creeks, and deep lakes.
+    \item \textbf{Seasonal Wetlands (300 points):} Selected from areas with water occurrence probabilities between $1\%$ and $50\%$, representing floodplains, agricultural marshes, and tidal mudflats.
+    \item \textbf{Dry Land (400 points):} Selected from areas with a historical water occurrence probability of $0\%$, representing arid shrublands, dunes, and urban regions.
+\end{itemize}
+
+While this stratified sampling design guarantees that the calibration data contains representation across all land cover categories, it does not alter the intrinsic temporal class imbalance of the system. During normal dry periods (which constitute the vast majority of the time series), the actual surface water occurrence rate among the 1,000 points drops to $8.27\%$. This creates a strong temporal class imbalance that represents a significant challenge for purely empirical sequential classifiers.
+
+\subsection{Google Earth Engine Data Compilation}
+At each point location, we extracted monthly aggregated time-series data using Google Earth Engine \citep{Amani2020Google} (data accessed in June 2026). We fetched static terrain features and dynamic meteorological/backscatter bands from the following specific GEE collections:
+\begin{itemize}
+    \item \textbf{Active Microwave (Sentinel-1 Synthetic Aperture Radar, SAR):} We compiled Interferometric Wide (IW) Ground Range Detected (GRD) products (GEE Asset: \verb|COPERNICUS/S1_GRD|) at $10$~m resolution, extracting vertical-vertical (VV) and vertical-horizontal (VH) polarization bands, as well as the VH/VV ratio. 
+    \item \textbf{Multispectral (Sentinel-2 MultiSpectral Instrument, MSI):} We extracted Sentinel-2 surface reflectance products (GEE Asset: \verb|COPERNICUS/S2_SR_HARMONIZED|), calculating five spectral water and vegetation indices: Normalized Difference Vegetation Index (NDVI), Normalized Difference Water Index (NDWI), Modified Normalized Difference Water Index (MNDWI), Land Surface Water Index (LSWI), and Enhanced Vegetation Index (EVI). Cloud masking was applied using the QA60 band, and months with complete cloud cover were omitted.
+    \item \textbf{Topography (SRTM $30$~m):} We compiled Shuttle Radar Topography Mission (SRTM) GL1 digital elevation model (DEM) features (GEE Asset: \verb|USGS/SRTMGL1_003|), including elevation, slope, and flow accumulation. We also calculated spatial Euclidean distance to the nearest river channel ($D_{\text{river}}$) and distance to the coastline ($D_{\text{coast}}$).
+    \item \textbf{Climate Forcing:} Climate Hazards Group InfraRed Precipitation with Station data (CHIRPS) daily precipitation data (GEE Asset: \verb|UCSB-CHG/CHIRPS/DAILY|) were summed monthly at $0.05^\circ$ resolution \citep{Funk2015The}. Temperature, total evaporation ($ET$), and potential evapotranspiration ($PET$) were compiled from the European Centre for Medium-Range Weather Forecasts (ECMWF) ERA5-Land monthly reanalysis dataset (GEE Asset: \verb|ECMWF/ERA5_LAND/MONTHLY_AGGR|) at $9$~km resolution \citep{MuñozSabater2021ERA5Land}.
+\end{itemize}
+
+\subsection{Ground Truth Labeling and Validation}
+The binary ground truth occurrence of surface water ($y_i(t) \in \{0, 1\}$) was derived using an established radar backscatter threshold:
+\begin{equation}
+    y_i(t) = \begin{cases} 1 & \text{if } VV_i(t) < -15\text{ dB} \\ 0 & \text{otherwise} \end{cases}
+\end{equation}
+Because radar backscatter is highly sensitive to dielectric properties, water surfaces show specular reflection and low backscatter. To ensure this proxy is highly reliable, we validated it against 100 manually digitized flood masks derived from cloud-free Sentinel-2 optical imagery (using the Modified Normalized Difference Water Index, MNDWI $> 0$) across the delta. The validation yielded an overall classification accuracy of $92.4\%$ ($F_1$-score of $0.887$), indicating the proxy's reliability in flat deltaic terrain. Overall accuracy and $F_1$-score were selected as performance indicators instead of Cohen's Kappa, which is highly sensitive to class prevalence in spatial-temporal datasets.
+
+To justify the selection of the $-15\text{ dB}$ threshold, we conducted a sensitivity analysis by varying the backscatter limit from $-17\text{ dB}$ to $-13\text{ dB}$ in steps of $0.5\text{ dB}$ against the optical validation masks. The $-15\text{ dB}$ threshold yielded the optimal balance, maximizing both $F_1$-score and overall accuracy. Shifting the threshold to a less conservative $-14\text{ dB}$ introduced false-positive water predictions in dry-season agricultural soils and sandy channels due to low roughness backscatter. Conversely, a more conservative $-16\text{ dB}$ threshold resulted in severe under-detection of seasonal wetlands and flooded zones with emergent vegetation canopies where double-bounce backscattering occurs. This sensitivity sweep indicates that the $-15\text{ dB}$ threshold is robust for representing surface water occurrence across the varied cover types of the Indus Delta.
+
+\input{tables/dataset_summary.tex}

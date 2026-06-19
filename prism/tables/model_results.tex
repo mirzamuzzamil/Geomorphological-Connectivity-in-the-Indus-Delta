@@ -1,0 +1,17 @@
+\begin{table*}[t]
+\caption{Classification performance (F1-score) of baseline models across normal, monsoon, and extreme flood periods on the Indus Delta point dataset (2018--2024 test split).}
+\label{tab:model_results}
+\centering
+\small
+\begin{tabular}{p{4.2cm} p{2.8cm} c c c}
+\hline
+\textbf{Model} & \textbf{Architecture} & \textbf{Normal F1} & \textbf{Monsoon F1} & \textbf{Extreme F1} \\
+ & & \textbf{(Dry Season)} & \textbf{(Jul--Sep 2022)} & \textbf{(Aug--Oct 2022)} \\
+\hline
+Random Forest (Terrain Only) & Static classifier   & 0.148 & 0.835 & 0.842 \\
+Random Forest (Combined)     & Static classifier   & 0.151 & 0.838 & 0.845 \\
+LSTM                         & Sequence model      & 0.000 & 0.752 & 0.745 \\
+Transformer                  & Sequence model      & 0.000 & 0.767 & 0.751 \\
+\hline
+\end{tabular}
+\end{table*}
