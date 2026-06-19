@@ -58,8 +58,8 @@ For more detailed version requirements, refer to [reproducibility/software_versi
 
 *   **Programming Language:** Python 3.10
 *   **Software Version:** v1.0.0
-*   **GitHub Repository:** [mmuzzamil-phd/indus-delta-surface-water](https://github.com/mmuzzamil-phd/indus-delta-surface-water)
-*   **Zenodo Archive:** [10.5281/zenodo.10827364](https://doi.org/10.5281/zenodo.10827364)
+*   **GitHub Repository:** [mirzamuzzamil/Geomorphological-Connectivity-in-the-Indus-Delta](https://github.com/mirzamuzzamil/Geomorphological-Connectivity-in-the-Indus-Delta)
+*   **Zenodo Archive:** Will be archived on Zenodo upon publication. In the interim, the dataset is available from the corresponding author upon request.
 *   **Software License:** MIT License
 *   **Data License:** Creative Commons Attribution 4.0 International (CC BY 4.0)
 

@@ -44,3 +44,12 @@ main.pdf
 .vscode/
 *.swp
 *.swo
+
+# Agent and AI Reports / Prompts / Audits
+*compile_report.md
+*q1_gate_check_prompt.md
+*submission_readiness_report.md
+*reference_audit.md
+*.cls.backup
+*.backup
+
