@@ -1,8 +1,39 @@
 # Google Earth Engine Credentials
 ee-muzzamil12-2f811d1cb2cc.json
 
-# Large Datasets (Archived on Zenodo)
+# Large Datasets
 data/*.npz
+!data/indus_dataset_sample.npz
+data/*.json
+
+# LaTeX Manuscript Files
+prism/
+
+# Temporary and Development Scripts
+scratch/
+ablation_experiments.py
+build_lit_matrix.py
+exploratory_analysis.py
+extract_novelty_base.py
+filter_papers.py
+gee_pipeline.py
+gee_test_dryrun.py
+generate_dataset.py
+generate_dataset_v2.py
+process_papers.py
+run_ablation_study.py
+run_cross_year_generalization.py
+run_diagnostics.py
+run_experiments.py
+run_scientific_experiments.py
+run_significance.py
+run_spatial_transfer.py
+run_state_reconstruction.py
+search_more_openalex.py
+search_openalex.py
+test_era5_collections.py
+train_baselines.py
+verify_era5_aggr.py
 
 # Python Caches & Environments
 __pycache__/
@@ -17,28 +48,6 @@ env/
 .DS_Store
 Thumbs.db
 
-# LaTeX Intermediate and Log Files
-*.aux
-*.log
-*.out
-*.toc
-*.synctex.gz
-*.bbl
-*.blg
-*.fdb_latexmk
-*.fls
-prism/*.pdf
-prism/*.aux
-prism/*.log
-prism/*.out
-prism/*.toc
-prism/*.synctex.gz
-prism/*.bbl
-prism/*.blg
-prism/*.fdb_latexmk
-prism/*.fls
-main.pdf
-
 # IDEs and Editors
 .idea/
 .vscode/
@@ -52,4 +61,3 @@ main.pdf
 *reference_audit.md
 *.cls.backup
 *.backup
-

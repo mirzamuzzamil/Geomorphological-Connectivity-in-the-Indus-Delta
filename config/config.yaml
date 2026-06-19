@@ -1,0 +1,23 @@
+# config/config.yaml
+project:
+  name: "indus-delta-surface-water-benchmark"
+  description: "Geomorphological Connectivity and Temporal Hydrological Controls of Surface Water Dynamics in the Indus River Delta"
+
+data:
+  raw_dataset_path: "data/indus_dataset.npz"
+  v2_dataset_path: "data/indus_dataset_v2.npz"
+  sample_dataset_path: "data/indus_dataset_sample.npz"
+  num_points: 1000
+  feature_names: [
+    "NDVI", "NDWI", "MNDWI", "LSWI", "VV", "VH", "VH_VV_ratio",
+    "precipitation", "temperature", "evaporation", "potential_evaporation",
+    "elevation", "slope", "flow_accumulation", "dist_to_river", "dist_to_coast"
+  ]
+  leakage_free_indices: [7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+gee:
+  roi: [67.0, 23.0, 69.0, 24.8]
+  start_date: "2022-08-01"
+  end_date: "2022-10-31"
+
+random_seed: 42

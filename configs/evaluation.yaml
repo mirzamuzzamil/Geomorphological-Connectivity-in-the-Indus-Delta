@@ -1,0 +1,6 @@
+# configs/evaluation.yaml
+evaluation:
+  metrics: ["f1", "iou", "precision", "recall", "auc"]
+  threshold: 0.5
+  spatial_split_ratio: 0.8
+  temporal_train_cutoff_index: 47  # index dividing 2018-2021 from 2022-2024

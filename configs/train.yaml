@@ -1,0 +1,18 @@
+# configs/train.yaml
+train:
+  random_forest:
+    max_depth: 10
+    n_estimators: 100
+  lstm:
+    hidden_dim: 32
+    num_layers: 2
+    learning_rate: 0.005
+    epochs: 15
+    batch_size: 32
+  transformer:
+    d_model: 32
+    nhead: 2
+    dim_feedforward: 64
+    learning_rate: 0.003
+    epochs: 15
+    batch_size: 32

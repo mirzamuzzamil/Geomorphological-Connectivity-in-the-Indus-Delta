@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this benchmark dataset or code in your research, please cite it as below."
+authors:
+  - family-names: "Muzzamil"
+    given-names: "Mirza Muhammad"
+    orcid: "https://orcid.org/0000-0000-0000-0000" # Replace with your ORCID
+  - family-names: "Ismael"
+    given-names: "Muhammad Ali"
+    orcid: "https://orcid.org/0000-0000-0000-0000" # Replace with ORCID
+  - family-names: "Ahmad"
+    given-names: "Syed Imran"
+    orcid: "https://orcid.org/0000-0000-0000-0000" # Replace with ORCID
+  - family-names: "Rustomov"
+    given-names: "Rustam B."
+    orcid: "https://orcid.org/0000-0000-0000-0000" # Replace with ORCID
+title: "Geomorphological Connectivity and Temporal Hydrological Controls of Surface Water Dynamics in the Indus River Delta"
+version: "1.0.0"
+doi: "10.5281/zenodo.placeholder" # Replace with your published Zenodo DOI
+date-released: "2026-06-19"
+url: "https://github.com/mirzamuzzamil/Geomorphological-Connectivity-in-the-Indus-Delta"
+preferred-citation:
+  type: journal-article
+  authors:
+    - family-names: "Muzzamil"
+      given-names: "Mirza Muhammad"
+    - family-names: "Ismael"
+      given-names: "Muhammad Ali"
+    - family-names: "Ahmad"
+      given-names: "Syed Imran"
+    - family-names: "Rustomov"
+      given-names: "Rustam B."
+  title: "Geomorphological Connectivity and Temporal Hydrological Controls of Surface Water Dynamics in the Indus River Delta"
+  journal: "Hydrology and Earth System Sciences"
+  year: 2026
+  doi: "10.5281/zenodo.placeholder" # Replace with published DOI
