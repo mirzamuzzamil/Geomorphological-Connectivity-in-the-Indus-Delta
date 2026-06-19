@@ -10,8 +10,8 @@ authors:
   - family-names: "Rustomov"
     given-names: "Rustam B."
 title: "Geomorphological Connectivity and Temporal Hydrological Controls of Surface Water Dynamics in the Indus River Delta"
-version: "1.0.0"
-doi: "10.5281/zenodo.20761608"
+version: "1.0.2"
+doi: "10.5281/zenodo.20761607"
 date-released: "2026-06-19"
 url: "https://github.com/mirzamuzzamil/Geomorphological-Connectivity-in-the-Indus-Delta"
 preferred-citation:
@@ -28,5 +28,5 @@ preferred-citation:
   title: "Geomorphological Connectivity and Temporal Hydrological Controls of Surface Water Dynamics in the Indus River Delta"
   journal: "Hydrology and Earth System Sciences"
   year: 2026
-  doi: "10.5281/zenodo.20761608"
+  doi: "10.5281/zenodo.20761607"
 
